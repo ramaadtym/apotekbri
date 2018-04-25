@@ -11,6 +11,7 @@
         <link rel="shortcut icon" href="<?php echo base_url();?> assets/img/favicons/favicon.png">
         <link rel="icon" type="image/png" sizes="192x192" href="<?php echo base_url();?>assets/img/favicons/favicon-192x192.png">
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>assets/img/favicons/apple-touch-icon-180x180.png">
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/js/plugins/datatables/dataTables.bootstrap4.min.css">
         <!-- END Icons -->
 
         <!-- Stylesheets -->
@@ -36,9 +37,23 @@
         <script src="<?php echo base_url();?>assets/js/codebase.js"></script>
 
         <!-- Page JS Plugins -->
-        <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
 
         <!-- Page JS Code -->
-        <script src="assets/js/pages/op_auth_signin.js"></script>
+        <script src="<?php echo base_url();?>assets/js/pages/op_auth_signin.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/pages/be_tables_datatables.js"></script>
     </body>
 </html>
+<script type="text/javascript">
+      $(function(){
+    $("#qty").on("input",function(){
+        var qty = $("#qty").val();
+        var hrg = $("#hrg").val();
+        $('#tot').val(qty*hrg);
+    });
+
+  }); 
+
+</script>

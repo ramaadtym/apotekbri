@@ -20,7 +20,7 @@
                                 <!-- Sign In Form -->
                                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                <form class="js-validation-signin" action="be_pages_auth_all.html" method="post">
+                                <form class="js-validation-signin" action="<?php echo base_url('Utama/login');?>" method="post">
                                     <div class="block block-themed block-rounded block-shadow">
                                         <div class="block-header bg-gd-dusk">
                                             <h3 class="block-title">Sign In</h3>
@@ -28,8 +28,8 @@
                                         <div class="block-content">
                                             <div class="form-group row">
                                                 <div class="col-12">
-                                                    <label for="login-username">Username</label>
-                                                    <input type="text" class="form-control" id="login-username" name="uname">
+                                                    <label for="login-username">No. Induk Pegawai</label>
+                                                    <input type="text" class="form-control" id="login-username" placeholder = "No. Induk Pegawai" name="uname">
                                                 </div>
                                             </div>
                                             <div class="form-group row">

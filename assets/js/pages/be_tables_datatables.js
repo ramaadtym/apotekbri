@@ -14,38 +14,27 @@ var BeTableDatatables = function() {
 
     // Init full DataTable, for more examples you can check out https://www.datatables.net/
     var initDataTableFull = function() {
-        jQuery('.js-dataTable-full').dataTable({
+        jQuery('#obat').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
             autoWidth: false
         });
     };
-
-    // Init full extra DataTable, for more examples you can check out https://www.datatables.net/
-    var initDataTableFullPagination = function() {
-        jQuery('.js-dataTable-full-pagination').dataTable({
-            pagingType: "full_numbers",
+    var initDataTableFull = function() {
+        jQuery('#jual').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
             autoWidth: false
         });
     };
-
-    // Init simple DataTable, for more examples you can check out https://www.datatables.net/
-    var initDataTableSimple = function() {
-        jQuery('.js-dataTable-simple').dataTable({
+    var initDataTableFull = function() {
+        jQuery('#beli').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
-            autoWidth: false,
-            searching: false,
-            oLanguage: {
-                sLengthMenu: ""
-            },
-            dom: "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-6'i><'col-sm-6'p>>"
+            autoWidth: false
         });
     };
 

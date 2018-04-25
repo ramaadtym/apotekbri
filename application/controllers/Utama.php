@@ -2,24 +2,39 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utama extends APT_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('Register');
+		$this->load->model('User');
+	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->laman('v_login');
+	}
+
+	public function login(){
+		$uname = $this->input->post('uname');
+		$pass = $this->input->post('pass');
+		$log = $this->User->verify($uname,$pass);
+
+		if($log != FALSE):
+			//set user data
+			$cttn = array(
+				'masuk' => TRUE,
+				'id' => $log->ID_apoteker,
+				'nama' => $log->Nama_apoteker,
+				'username' => $log->induk,
+				'level' => $log->user_level
+			);
+			$this->session->set_userdata($cttn);
+			redirect('Dashboard','refresh');
+		endif;
+		
+	}
+
+	public function reg(){
+		$this->Register->awal();
 	}
 }

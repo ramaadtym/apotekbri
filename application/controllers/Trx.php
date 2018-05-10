@@ -26,18 +26,26 @@ class Trx extends APT_Controller {
 
 		$input = array(
 			'tgljual' => $tgljual,
-			'nama' => $nama,
-			'jns' => $jns,
-			'ktgr' => $ktgr,
-			'jum' => $jum,
-			'hrg' => $hrg,
-			'tot' => $tot,
-			'kdl' => $kdl,
+            'nama' => $nama,
+            'jns' => $jns,
+            'ktgr' => $ktgr,
+            'jum' => $jum,
+            'hrg' => $hrg,
+            'tot' => $tot,
+            'kdl' => $kdl,
 			'apoteker' => $this->session->userdata('id')
 		);
 		$this->Transaksi->insert_jual($input);
+        $this->session->set_flashdata('add','Data berhasil ditambah');
 		redirect('Dashboard');
 	}
 
+    public function delJual(){
+	    $id = $this->input->post('id');
+        $this->db->where('idFakturjual', $id);
+        $this->db->delete('penjualan');
+        $this->session->set_flashdata('del','Data berhasil dihapus');
+        redirect('Dashboard');
 
+    }
 }

@@ -1,7 +1,7 @@
-<table class="table table-bordered table-striped table-vcenter js-dataTable-full" id="obat">
+<table class="table table-bordered table-striped table-vcenter js-dataTable-full obat">
 <thead>
     <tr>
-        <th class="text-center" style="width: 5%;"">No</th>
+        <th class="text-center" style="width: 5%;">No</th>
         <th class="d-none d-sm-table-cell">Nama Obat</th>
         <th class="d-none d-sm-table-cell" style="width: 15%;">Jenis</th>
         <th class="text-center" style="width: 15%;">Kategori</th>

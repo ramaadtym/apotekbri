@@ -14,23 +14,23 @@ var BeTableDatatables = function() {
 
     // Init full DataTable, for more examples you can check out https://www.datatables.net/
     var initDataTableFull = function() {
-        jQuery('#obat').dataTable({
+        jQuery('.obat').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
             autoWidth: false
         });
     };
-    var initDataTableFull = function() {
-        jQuery('#jual').dataTable({
+    var initDataTableJ = function() {
+        jQuery('.jual').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
             autoWidth: false
         });
     };
-    var initDataTableFull = function() {
-        jQuery('#beli').dataTable({
+    var initDataTableB = function() {
+        jQuery('.beli').dataTable({
             columnDefs: [ { orderable: false, targets: [ 4 ] } ],
             pageLength: 8,
             lengthMenu: [[5, 8, 15, 20], [5, 8, 15, 20]],
@@ -44,9 +44,11 @@ var BeTableDatatables = function() {
             exDataTable();
 
             // Init Datatables
-            initDataTableSimple();
+            // initDataTableSimple();
             initDataTableFull();
-            initDataTableFullPagination();
+            initDataTableJ();
+            initDataTableB();
+            // initDataTableFullPagination();
         }
     };
 }();

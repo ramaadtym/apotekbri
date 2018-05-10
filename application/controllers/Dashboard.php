@@ -15,6 +15,7 @@ class Dashboard extends APT_Controller {
         }
         $data['obat'] = $this->Transaksi->get_obat();
         $data['trx'] = $this->Transaksi->get_trx();
+        $data['kt'] = $this->Transaksi->get_kategori_general();
 		$this->laman('laman/v_dashboard',$data);
 	}
 	public function logout(){

@@ -18,13 +18,16 @@
 			return $query->result_array();
 
 		}
+		public function get_kategori_general(){
+		    $query = $this->db->get("kategori");
+		    return $query->result();
+        }
 		public function insert_jual($input){
 			//Get Last Record
-			$this->db->order_by('idFakturjual',"DESC");
-			$q = $this->db->get('penjualan')->row();
-
+            $this->db->select('Max(idFakturjual)+1 as id');
+            $q = $this->db->get('penjualan')->row()->id;
 			if($q == NULL){
-				$id = 0;
+			    $id = 0;
 				$data = array(
 					'idFakturjual' => $id+1,
 					'tglPenjualan' => $input['tgljual'],
@@ -36,11 +39,11 @@
 					'ID_apoteker' => $input['apoteker'],
 				);
 				$this->db->insert('penjualan', $data);
+
 			}
 			else{
-				$id = $q->idFakturjual;
 				$data = array(
-					'idFakturjual' => $id+1,
+					'idFakturjual' => $q,
 					'tglPenjualan' => $input['tgljual'],
 					'idObat' => $input['nama'],
 					'namaKategori' => $input['ktgr'],
@@ -49,8 +52,9 @@
 					'total_hrg' => $input['tot'],
 					'ID_apoteker' => $input['apoteker'],
 				);
-				$this->db->insert_id();
+
 				$this->db->insert('penjualan', $data);
+
 			}
 
 		}

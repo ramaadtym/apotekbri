@@ -11,13 +11,14 @@
         public function addBeli(){
             $tglbeli = $this->input->post('tglbeli');
             $namaobt = $this->input->post('namaobt');
-            $jnsobt = $this->input->post('jns');
+            $jnsobt = $this->input->post('jenis');
             $ktobt = $this->input->post('kategori');
             $jum = $this->input->post('jum');
             $hrg = $this->input->post('hrg');
             $tot = $this->input->post('total');
             $kadal = $this->input->post('kadaluwarsa');
             $stok = $this->input->post('stok');
+
 
             $masukkan = array(
                 'tglbeli' => $tglbeli,

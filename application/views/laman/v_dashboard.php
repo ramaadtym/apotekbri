@@ -58,10 +58,10 @@
 
                        <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#jual" role="tab" aria-controls="profile" aria-selected="false">Penjualan</a>
+                          <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#jual" role="tab" aria-controls="profile" aria-selected="false">Penjualan</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#beli" role="tab" aria-controls="contact" aria-selected="false">Pembelian</a>
+                          <a class="nav-link " id="contact-tab" data-toggle="tab" href="#beli" role="tab" aria-controls="contact" aria-selected="false">Pembelian</a>
                         </li>
                          <li class="nav-item">
                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#obat" role="tab" aria-controls="home" aria-selected="true">Daftar Obat</a>
@@ -69,12 +69,12 @@
                        </ul>
                         <!-- Tab menu content -->
                         <div class="tab-content" id="myTabContent">
-                          <div class="tab-pane fade py-3" id="obat" role="tabpanel" aria-labelledby="home-tab">
+                          <div class="tab-pane  fade py-3" id="obat" role="tabpanel" aria-labelledby="home-tab">
                               <!-- Daftar Obat -->
                               <h3>Stok Obat</h3>
                               <?php $this->load->view('laman/tabel/tbl_obat');?>
                           </div>
-                          <div class="tab-pane fade  py-3" id="jual" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane show active fade  py-3" id="jual" role="tabpanel" aria-labelledby="profile-tab">
                               <!-- Penjualan -->
                             <div class="row mb-10">
                                 <div class="col-12">
@@ -87,7 +87,7 @@
                             </div>
                             <?php $this->load->view('laman/tabel/tbl_jual');?>
                           </div>
-                          <div class="tab-pane show active fade py-3" id="beli" role="tabpanel" aria-labelledby="contact-tab">
+                          <div class="tab-pane  fade py-3" id="beli" role="tabpanel" aria-labelledby="contact-tab">
                               <!-- Pembelian -->
                               <div class="row mb-10">
                                   <div class="col-12">

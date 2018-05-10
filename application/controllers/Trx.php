@@ -12,7 +12,6 @@ class Trx extends APT_Controller {
 		// echo $id;
 		$get = $this->Transaksi->get_kategori($id);
 		echo json_encode($get);
-
 	}
 	public function addJual(){
 		$tgljual = $this->input->post('tgljual');

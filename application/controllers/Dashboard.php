@@ -6,6 +6,7 @@ class Dashboard extends APT_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Transaksi');
+		$this->load->model('Beli');
 	}
 
 	public function index()
@@ -14,8 +15,10 @@ class Dashboard extends APT_Controller {
             redirect("/");
         }
         $data['obat'] = $this->Transaksi->get_obat();
+        $data['obats'] = $this->Transaksi->get_obat_general();
         $data['trx'] = $this->Transaksi->get_trx();
         $data['kt'] = $this->Transaksi->get_kategori_general();
+        $data['beli'] = $this->Beli->get_beli();
 		$this->laman('laman/v_dashboard',$data);
 	}
 	public function logout(){

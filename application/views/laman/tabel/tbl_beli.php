@@ -16,16 +16,22 @@
 </thead>
 <tbody>
     <tr>
-      <td class="text-center">1</td>
-      <td class="font-w600">Jeffrey Shaw</td>
-      <td class="d-none d-sm-table-cell">customer1@example.com</td>
-      <td class="d-none d-sm-table-cell">customer1@example.com</td>
-      <td class="d-none d-sm-table-cell">customer1@example.com</td>
-      <td class="d-none d-sm-table-cell">2000</td>
-      <td class="d-none d-sm-table-cell">customer1@example.com</td>
-      <td class="d-none d-sm-table-cell">customer1@example.com</td>
+        <?php
+        $no = 0;
+         foreach($beli as $buy):
+        $no++;
+
+        ?>
+      <td class="text-center"><?php echo $no;?></td>
+      <td class="font-w600"><?php echo $buy->tglPembelian;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->Nama_obat;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->Jenis_obat;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->Nama_kategori;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->Qty;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->tglKadaluwarsa;?></td>
+      <td class="d-none d-sm-table-cell"><?php echo $buy->hrg;?></td>
       <td class="d-none d-sm-table-cell">
-          <span class="badge badge-success">VIP</span>
+          <span class="badge badge-success"><?php echo $buy->total_hrg;?></span>
       </td>
       <td class="text-center">
           <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Edit Obat">
@@ -33,5 +39,6 @@
           </button>
       </td>
   </tr>
+<?php endforeach;?>
 </tbody>
 </table>

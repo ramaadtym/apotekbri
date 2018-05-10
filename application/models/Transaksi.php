@@ -2,9 +2,15 @@
 	class Transaksi extends CI_model{
 
 		public function get_obat(){
+		    $this->db->distinct();
 			$this->db->join('kategori', 'obat.ID_kategori = kategori.ID_kategori');
 			return $this->db->get('obat')->result();
 		}
+        public function get_obat_general(){
+            $this->db->select('Nama_obat as ob,ID_Obat');
+            $this->db->join('kategori', 'obat.ID_kategori = kategori.ID_kategori');
+            return $this->db->get('obat')->row()->ob;
+        }
 
 		public function get_trx(){
 			$this->db->join('obat', 'ID_Obat = idObat');
@@ -58,5 +64,6 @@
 			}
 
 		}
+
 	}
 ?>

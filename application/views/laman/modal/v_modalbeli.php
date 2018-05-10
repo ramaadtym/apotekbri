@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Pembelian</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Stok</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,17 +15,19 @@
 </div>
 <div class="form-group">
     <label for="exampleInputEmail1">Nama Obat</label>
-   <input type="text" class="form-control" name="namaobt">
+    <select class="custom-select" name ="namaobt" onchange="loadKate(this.value);">
+        <option selected>- Nama Obat -</option>
+        <?php foreach($obat as $dt):?>
+            <option value="<?php echo $dt->ID_Obat;?>"><?php echo $dt->Nama_obat;?></option>
+        <?php endforeach;?>
+    </select>
+    <?php foreach($obat as $dt):?>
+        <input type="hidden" value="<?php echo $dt->Nama_obat;?>" name="namanya">
+    <?php endforeach;?>
 </div>
 <div class="form-group">
     <label for="exampleInputPassword1">Jenis Obat</label>
-    <input type="text" class="form-control" name="jns" placeholder="misal: Sakit kepala">
-<!--    <select class="custom-select" name ="jns">-->
-<!--        <option selected>- Jenis Obat -</option>-->
-<!--        --><?php //foreach($obat as $dt):?>
-<!--            <option value="--><?php //echo $dt->ID_Obat;?><!--">--><?php //echo $dt->Jenis_obat;?><!--</option>-->
-<!--        --><?php //endforeach;?>
-<!--    </select>-->
+    <input type="text" id="jns2" class="form-control" name="jenis" readonly>
 </div>
 <div class="form-group">
     <label for="exampleInputPassword1">Kategori Obat</label>
@@ -33,6 +35,7 @@
         <option selected>- Jenis Kategori -</option>
         <?php foreach($kt as $kate):?>
             <option value="<?php echo $kate->ID_kategori;?>"><?php echo $kate->Nama_kategori;?></option>
+
         <?php endforeach;?>
     </select>
 </div>
@@ -68,3 +71,25 @@
 </div>
 </div>
 </div>
+<script>
+    function loadKate(str){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var json = JSON.parse(this.responseText);
+                json.forEach(function(element) {
+                    output1 = element["Nama_kategori"];
+                    output2 = element["Jenis_obat"];
+                    output3 = element["hrg_obat"];
+                    output4 = element['kadaluwarsa'];
+                });
+                document.getElementById("ktgr").value = output1;
+                document.getElementById("jns2").value = output2;
+//                document.getElementById("hrg").value = output3;
+//                document.getElementById("kadal").value = output4;
+            }
+        };
+        xhttp.open("GET", "<?php echo base_url() . 'Trx/kategori?id='?>"+str, true);
+        xhttp.send();
+    }
+</script>

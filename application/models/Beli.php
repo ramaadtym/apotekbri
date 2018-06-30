@@ -114,7 +114,7 @@ class Beli extends CI_Model
 
                 $data2 =  array(
                     'ID_Obat' => $r+1,
-                    'Nama_obat' => $input['nama'],
+                    'Nama_obat' => ucfirst($input['nama']),
                     'kadaluwarsa' => $input['kdl'],
                     'hrg_obat' => $input['hrg'],
                     'Jenis_obat' => $input['jns'],
@@ -139,7 +139,7 @@ class Beli extends CI_Model
                 );
                $data2 =  array(
                    'ID_Obat' => $r+1,
-                   'Nama_obat' => $input['nama'],
+                   'Nama_obat' => ucfirst($input['nama']),
                    'kadaluwarsa' => $input['kdl'],
                    'Jenis_obat' => $input['jns'],
                    'hrg_obat' => $input['hrg'],
@@ -165,7 +165,7 @@ class Beli extends CI_Model
         );
 
         $dtobat = array(
-           'Nama_obat' => $input['nama'],
+           'Nama_obat' => ucfirst($input['nama']),
            'kadaluwarsa' => $input['kdl'],
            'Jenis_obat' => $input['jns'],
            'hrg_obat' => $input['hrg'],

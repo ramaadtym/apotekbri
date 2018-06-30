@@ -33,7 +33,7 @@
                 'apoteker' => $this->session->userdata('id')
             );
             $this->Beli->insert_beli($masukkan);
-            $this->session->set_flashdata('add','Data berhasil ditambah');
-            redirect('Dashboard');
+            /*$this->session->set_flashdata('add','Data berhasil ditambah');
+            redirect('Dashboard');*/
         }
     }

@@ -29,9 +29,9 @@
       <td class="d-none d-sm-table-cell"><?php echo $buy->Nama_kategori;?></td>
       <td class="d-none d-sm-table-cell"><?php echo $buy->Qty;?></td>
       <td class="d-none d-sm-table-cell"><?php echo $buy->tglKadaluwarsa;?></td>
-      <td class="d-none d-sm-table-cell"><?php echo $buy->hrg;?></td>
+      <td class="d-none d-sm-table-cell">Rp<?php echo number_format($buy->hrg,0,'','.');?></td>
       <td class="d-none d-sm-table-cell">
-          <span class="badge badge-success"><?php echo $buy->total_hrg;?></span>
+          <span class="badge badge-success">Rp<?php echo number_format($buy->total_hrg,0,'','.');?></span>
       </td>
       <td class="text-center">
           <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Edit Obat">

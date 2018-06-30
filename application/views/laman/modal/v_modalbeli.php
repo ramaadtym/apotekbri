@@ -15,19 +15,21 @@
 </div>
 <div class="form-group">
     <label for="exampleInputEmail1">Nama Obat</label>
-    <select class="custom-select" name ="namaobt" onchange="loadKate(this.value);">
+    <input type="text" class="form-control" name="namaobt">
+    <!-- <select class="custom-select" name ="namaobt" onchange="loadKate(this.value);">
         <option selected>- Nama Obat -</option>
         <?php foreach($obat as $dt):?>
             <option value="<?php echo $dt->ID_Obat;?>"><?php echo $dt->Nama_obat;?></option>
         <?php endforeach;?>
-    </select>
-    <?php foreach($obat as $dt):?>
+    </select> -->
+    <!-- <?php foreach($obat as $dt):?>
         <input type="hidden" value="<?php echo $dt->Nama_obat;?>" name="namanya">
-    <?php endforeach;?>
+    <?php endforeach;?> -->
 </div>
 <div class="form-group">
     <label for="exampleInputPassword1">Jenis Obat</label>
-    <input type="text" id="jns2" class="form-control" name="jenis" readonly>
+    <!-- <input type="text" id="jns2" class="form-control" name="jenis" readonly> -->
+    <input type="text" class="form-control" name="jenis">
 </div>
 <div class="form-group">
     <label for="exampleInputPassword1">Kategori Obat</label>

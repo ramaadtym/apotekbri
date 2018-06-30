@@ -35,14 +35,14 @@
           <span class="badge badge-success">Rp<?php echo number_format($buy->total_hrg,0,'','.');?></span>
       </td>
       <td class="text-center">
-          <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" title="Edit Obat" data-target="#edit<?php echo $buy->ID_Obat;?>">
+          <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" title="Edit Obat" data-target="#edit<?php echo $buy->idFakturbeli;?>">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </button>
       </td>
   </tr>
   <!-- MODAL EDIT PEMBELIAN -->
 
-  <div class="modal fade" id="edit<?php echo $buy->ID_Obat;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="edit<?php echo $buy->idFakturbeli;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

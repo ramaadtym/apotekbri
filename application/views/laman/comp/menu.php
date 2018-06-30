@@ -5,13 +5,13 @@
         </li>
 
         <li>
-            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-plus-square"></i><span class="sidebar-mini-hide">Manajemen Obat</span></a>
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Manajemen Pengguna</span></a>
             <ul>
                 <li>
-                    <a href="op_error_400.html">Data Obat</a>
+                    <a href="op_error_400.html">Data Pengguna</a>
                 </li>
                 <li>
-                    <a href="op_error_400.html">Tambah obat</a>
+                    <a href="op_error_400.html">Tambah Pengguna</a>
                 </li>
                 
             </ul>

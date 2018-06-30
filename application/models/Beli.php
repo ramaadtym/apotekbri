@@ -87,59 +87,69 @@ class Beli extends CI_Model
         $this->db->select('Max(ID_Obat)+1 as id');
         $r = $this->db->get('obat')->row()->id;
         
+        //cek nama obat udah ada atau belum
 
-        if($q == NULL):
-            $id = 0;
-            $data = array(
-                'idFakturbeli' => $id+1,
-                'tglPembelian' => $input['tglbeli'],
-                'idObat' => $r+1,
-                'idKategori' => $input['ktgr'],
-                'Qty' => $input['jum'],
-                'hrg' => $input['hrg'],
-                'total_hrg' => $input['tot'],
-                'tglKadaluwarsa' => $input['kdl'],
-                'ID_apoteker' => $input['apoteker']
-            );
-            $idobt = 0;
+        $this->db->select('Nama_obat');
+        $this->db->where('Nama_obat',ucfirst($input['nama']));
+        $t = $this->db->get('obat');
 
-            $data2 =  array(
-                'ID_Obat' => $r+1,
-                'Nama_obat' => $input['nama'],
-                'kadaluwarsa' => $input['kdl'],
-                'hrg_obat' => $input['hrg'],
-                'Jenis_obat' => $input['jns'],
-                'ID_kategori' => $input['ktgr'],
-                'stok' => $input['jum']
-            );
-
-            $this->db->insert('obat', $data2);
-
-            $this->db->insert('pembelian', $data);
+        if($t->num_rows() > 0):
+           $this->session->set_flashdata('add','Nama Obat sudah ada, silakan cek Daftar Obat');
+           redirect('Dashboard');
         else:
-            $data = array(
-                'idFakturbeli' => $q,
-                'tglPembelian' => $input['tglbeli'],
-                'idObat' =>$r+1,
-                'idKategori' => $input['ktgr'],
-                'Qty' => $input['jum'],
-                'hrg' => $input['hrg'],
-                'total_hrg' => $input['tot'],
-                'tglKadaluwarsa' => $input['kdl'],
-                'ID_apoteker' => $input['apoteker']
-            );
-           $data2 =  array(
-               'ID_Obat' => $r+1,
-               'Nama_obat' => $input['nama'],
-               'kadaluwarsa' => $input['kdl'],
-               'Jenis_obat' => $input['jns'],
-               'hrg_obat' => $input['hrg'],
-               'ID_kategori' => $input['ktgr'],
-               'stok' => $input['jum']
-           );
+            if($q == NULL):
+                $id = 0;
+                $data = array(
+                    'idFakturbeli' => $id+1,
+                    'tglPembelian' => $input['tglbeli'],
+                    'idObat' => $r+1,
+                    'idKategori' => $input['ktgr'],
+                    'Qty' => $input['jum'],
+                    'hrg' => $input['hrg'],
+                    'total_hrg' => $input['tot'],
+                    'tglKadaluwarsa' => $input['kdl'],
+                    'ID_apoteker' => $input['apoteker']
+                );
+                $idobt = 0;
 
-            $this->db->insert('obat', $data2);
-            $this->db->insert('pembelian', $data);
+                $data2 =  array(
+                    'ID_Obat' => $r+1,
+                    'Nama_obat' => $input['nama'],
+                    'kadaluwarsa' => $input['kdl'],
+                    'hrg_obat' => $input['hrg'],
+                    'Jenis_obat' => $input['jns'],
+                    'ID_kategori' => $input['ktgr'],
+                    'stok' => $input['jum']
+                );
+
+                $this->db->insert('obat', $data2);
+
+                $this->db->insert('pembelian', $data);
+            else:
+                $data = array(
+                    'idFakturbeli' => $q,
+                    'tglPembelian' => $input['tglbeli'],
+                    'idObat' =>$r+1,
+                    'idKategori' => $input['ktgr'],
+                    'Qty' => $input['jum'],
+                    'hrg' => $input['hrg'],
+                    'total_hrg' => $input['tot'],
+                    'tglKadaluwarsa' => $input['kdl'],
+                    'ID_apoteker' => $input['apoteker']
+                );
+               $data2 =  array(
+                   'ID_Obat' => $r+1,
+                   'Nama_obat' => $input['nama'],
+                   'kadaluwarsa' => $input['kdl'],
+                   'Jenis_obat' => $input['jns'],
+                   'hrg_obat' => $input['hrg'],
+                   'ID_kategori' => $input['ktgr'],
+                   'stok' => $input['jum']
+               );
+
+                $this->db->insert('obat', $data2);
+                $this->db->insert('pembelian', $data);
+            endif;
         endif;
     }
 

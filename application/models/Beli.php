@@ -143,6 +143,32 @@ class Beli extends CI_Model
         endif;
     }
 
+    public function edit_beli($input){
+        $data = array(
+            'tglPembelian' => $input['tglbeli'],
+            'idKategori' => $input['ktgr'],
+            'Qty' => $input['jum'],
+            'hrg' => $input['hrg'],
+            'total_hrg' => $input['tot'],
+            'tglKadaluwarsa' => $input['kdl'],
+            'ID_apoteker' => $input['apoteker']
+        );
+
+        $dtobat = array(
+           'Nama_obat' => $input['nama'],
+           'kadaluwarsa' => $input['kdl'],
+           'Jenis_obat' => $input['jns'],
+           'hrg_obat' => $input['hrg'],
+           'ID_kategori' => $input['ktgr'],
+           'stok' => $input['jum']
+        );
+
+        $this->db->where('ID_Obat', $input['idObt']);
+        $this->db->update('obat', $dtobat);
+
+        $this->db->where('idFakturbeli', $input['faktur']);
+        $this->db->update('pembelian', $data);
+    }
     public function get_beli(){
         $this->db->join('obat','idObat = ID_Obat');
         $this->db->join('kategori','idKategori = kategori.ID_Kategori');

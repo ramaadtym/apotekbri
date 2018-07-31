@@ -3,10 +3,11 @@
         <li>
             <a href="<?php echo base_url();?>Dashboard" class="active"><i class="si si-refresh"></i><span class="sidebar-mini-hide">Sirkulasi</span></a>
         </li>
-
+        <?php if($this->session->userdata('level') == "admin"):?>
         <li>
             <a href="<?php echo base_url();?>Users"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Manajemen Pengguna</span></a>
         </li>
+    <?php endif;?>
         <!-- <li>
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-refresh"></i><span class="sidebar-mini-hide">Sirkulasi</span></a>
             <ul>

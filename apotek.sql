@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2018 at 03:29 AM
+-- Generation Time: Jun 30, 2018 at 10:15 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -42,7 +42,9 @@ CREATE TABLE `apoteker` (
 --
 
 INSERT INTO `apoteker` (`ID_apoteker`, `Nama_apoteker`, `induk`, `pass`, `Alamat`, `user_level`) VALUES
-(1, 'Rama Aditya Maulana', 1301150034, '$2a$08$VbAn1/Z1lyOh7JIMICbDXO9qj8V6/PFx70Qu2sdsD1peKG0G1wb4G', 'Jakarta', 'admin');
+(1, 'Rama Aditya Maulana', 1301150034, '$2a$08$VbAn1/Z1lyOh7JIMICbDXO9qj8V6/PFx70Qu2sdsD1peKG0G1wb4G', 'Jakarta', 'admin'),
+(3, 'Aziza Hayupratiwi', 1301150440, '$2a$08$wLImENP24ZD3a9P1i7yzo.s.3k4Xgb7Aoi2KVm7ZsoV233sxT.YZS', 'Kalimantan', 'apoteker'),
+(5, 'Mahmud', 130311321, '$2a$08$oyMUQsuq995MzMgyR4lQ6eRvkX03h8B3gpEt3CcUXHFn3NKEbZdpq', 'Jepang', 'kasir');
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,7 @@ CREATE TABLE `jadwaldokter` (
 --
 
 CREATE TABLE `kategori` (
-  `ID_kategori` varchar(25) NOT NULL,
+  `ID_kategori` int(11) NOT NULL,
   `Nama_kategori` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -92,8 +94,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`ID_kategori`, `Nama_kategori`) VALUES
-('01', 'OBAT KERAS'),
-('02', 'OBAT GENERIK');
+(1, 'OBAT KERAS'),
+(2, 'OBAT GENERIK');
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,7 @@ CREATE TABLE `obat` (
   `stok` int(11) NOT NULL DEFAULT '0',
   `kadaluwarsa` date NOT NULL,
   `hrg_obat` int(11) NOT NULL,
-  `ID_kategori` varchar(25) NOT NULL
+  `ID_kategori` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -139,9 +141,13 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`ID_Obat`, `Jenis_obat`, `Nama_obat`, `stok`, `kadaluwarsa`, `hrg_obat`, `ID_kategori`) VALUES
-(2, 'Obat Flu, Batuk dan Pilek', 'Dextral', 0, '0000-00-00', 3000, '01'),
-(3, 'Sakit Kepala', 'Paramex', 0, '0000-00-00', 5000, '02'),
-(4, 'Sakit Kepala', 'Decolgen', 0, '2018-05-24', 4000, '01');
+(2, 'Obat Flu, Batuk dan Pilek', 'Dextral', 3, '2018-08-15', 12500, 2),
+(3, 'Sakit Kepala', 'Paramex', 4, '0000-00-00', 5000, 2),
+(4, 'Sakit Kepala', 'Decolgen', 0, '2018-05-24', 4000, 1),
+(5, 'ads', 'asd', 12, '2018-05-05', 12000, 1),
+(7, 'Pusing', 'Revanol', 7, '2018-08-22', 15000, 1),
+(9, 'Flu', 'Panadol', 2, '2018-09-22', 8000, 1),
+(11, 'puyer', 'Buyung upik jamu', 12, '2018-12-31', 15000, 2);
 
 -- --------------------------------------------------------
 
@@ -174,9 +180,22 @@ INSERT INTO `pasien` (`idPasien`, `nmPasien`, `umur`, `gender`, `Alamat`, `noTel
 CREATE TABLE `pembelian` (
   `idFakturbeli` varchar(25) NOT NULL,
   `tglPembelian` date NOT NULL,
-  `idObat` varchar(25) NOT NULL,
-  `idKategori` varchar(25) NOT NULL
+  `idObat` int(11) NOT NULL,
+  `idKategori` int(11) NOT NULL,
+  `Qty` int(11) NOT NULL,
+  `hrg` int(11) NOT NULL,
+  `total_hrg` int(11) NOT NULL,
+  `tglKadaluwarsa` date NOT NULL,
+  `ID_apoteker` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembelian`
+--
+
+INSERT INTO `pembelian` (`idFakturbeli`, `tglPembelian`, `idObat`, `idKategori`, `Qty`, `hrg`, `total_hrg`, `tglKadaluwarsa`, `ID_apoteker`) VALUES
+('1', '2018-06-30', 9, 1, 2, 8000, 8000, '2018-09-22', '1'),
+('2', '2018-06-30', 11, 2, 12, 15000, 180000, '2018-12-31', '1');
 
 -- --------------------------------------------------------
 
@@ -185,7 +204,7 @@ CREATE TABLE `pembelian` (
 --
 
 CREATE TABLE `penjualan` (
-  `idFakturjual` varchar(25) NOT NULL,
+  `idFakturjual` int(11) NOT NULL,
   `tglPenjualan` date NOT NULL,
   `idObat` int(11) NOT NULL,
   `namaKategori` varchar(255) NOT NULL,
@@ -200,14 +219,10 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`idFakturjual`, `tglPenjualan`, `idObat`, `namaKategori`, `Qty`, `harga`, `total_hrg`, `ID_apoteker`) VALUES
-('1', '2018-04-25', 2, 'OBAT KERAS', 1, 1, 1, '1'),
-('2', '2018-04-25', 2, 'OBAT KERAS', 1, 1, 1, '1'),
-('3', '2018-04-25', 4, 'OBAT KERAS', 3, 5000, 15000, '1'),
-('4', '2018-04-25', 2, 'OBAT KERAS', 1, 3000, 3000, '1'),
-('5', '2018-04-25', 3, 'OBAT GENERIK', 1, 5000, 5000, '1'),
-('6', '2018-04-25', 2, 'OBAT KERAS', 5, 3000, 15000, '1'),
-('7', '2018-04-25', 3, 'OBAT GENERIK', 4, 5000, 20000, '1'),
-('8', '2018-04-25', 2, 'OBAT KERAS', 8, 3000, 24000, '1');
+(1, '2018-05-07', 2, 'OBAT KERAS', 1, 3000, 3000, '1'),
+(2, '2018-05-07', 2, 'OBAT KERAS', 50, 3000, 150000, '1'),
+(3, '2018-05-07', 2, 'OBAT KERAS', 0, 3000, 0, '1'),
+(4, '2018-05-07', 2, 'OBAT KERAS', 80, 3000, 240000, '1');
 
 -- --------------------------------------------------------
 
@@ -359,7 +374,7 @@ ALTER TABLE `laboratorium`
 -- Constraints for table `obat`
 --
 ALTER TABLE `obat`
-  ADD CONSTRAINT `fk_obat` FOREIGN KEY (`ID_kategori`) REFERENCES `kategori` (`ID_kategori`);
+  ADD CONSTRAINT `fk_obat` FOREIGN KEY (`ID_kategori`) REFERENCES `kategori` (`ID_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

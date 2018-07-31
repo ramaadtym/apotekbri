@@ -8,7 +8,8 @@
 				// var_dump($query);
 				// echo "Ada";
 				$user = $query->result()[0];
-				if($this->bcrypt->check_password($pass,$user->pass)):
+				// if($this->bcrypt->check_password($pass,$user->pass)):
+				if(md5($user->pass)):
 					return $user;
 				endif;
 			endif;
@@ -20,7 +21,7 @@
 		}
 		public function editUsers($data) {
 
-		if($data['pwd'] == NULL):
+		if($data['pwd'] == NULL): // kalo ga mau ganti pass
 			$object = array(
 				'Nama_apoteker'=> $data['apoteker'],
 				'induk'=> $data['uname'],
@@ -28,11 +29,11 @@
 				'Alamat'=> $data['alamat'],
 				'user_level'=>$data['level']
 			);
-		else:
+		else: //kalo ganti pass
 			$object = array(
 				'Nama_apoteker'=> $data['apoteker'],
 				'induk'=> $data['uname'],
-				'pass'=> $this->bcrypt->hash_password($data['pwd']),
+				'pass'=> md5($data['pwd']),
 				'Alamat'=> $data['alamat'],
 				'user_level'=>$data['level']
 			);	

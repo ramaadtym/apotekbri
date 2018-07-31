@@ -7,6 +7,9 @@
         <li>
             <a href="<?php echo base_url();?>Users"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Manajemen Pengguna</span></a>
         </li>
+        <li>
+            <a href="<?php echo base_url();?>Resep"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Lihat Resep</span></a>
+        </li>
     <?php endif;?>
         <!-- <li>
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-refresh"></i><span class="sidebar-mini-hide">Sirkulasi</span></a>

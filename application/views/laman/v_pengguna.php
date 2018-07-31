@@ -57,8 +57,8 @@
                                 <div class="row mb-10">
                                     <div class="col-12">
                                         <div class="float-right">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#addJual"><i class="si si-plus"></i> Tambah</button>
-                                            <?php $this->load->view('laman/modal/v_modaluser');?>
+                                            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#addJual"><i class="si si-plus"></i> Tambah</button>
+                                            <?php $this->load->view('laman/modal/v_modaluser');?> -->
                                         </div>
                                     </div>
                                 </div>

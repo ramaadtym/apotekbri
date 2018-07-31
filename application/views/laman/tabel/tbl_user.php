@@ -29,9 +29,9 @@
           <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" title="Edit Pengguna" data-target="#edtUsers<?php echo $users->ID_apoteker;?>">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </button>
-          <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" title="Hapus Pengguna" data-target="#hpsUsers<?php echo $users->ID_apoteker;?>">
+          <!-- <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" title="Hapus Pengguna" data-target="#hpsUsers<?php echo $users->ID_apoteker;?>">
               <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
+          </button> -->
       </td>
   </tr>
 

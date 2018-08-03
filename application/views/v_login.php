@@ -14,6 +14,7 @@
                                         <span class="font-size-xl text-primary-dark">Klinik</span><span class="font-size-xl"> Brimedika</span>
                                     </a>
                                     <h1 class="h4 font-w700 mt-30 mb-10">Aplikasi Apotek</h1>
+                                    <?php echo $this->session->flashdata('salah');?>
                                 </div>
                                 <!-- END Header -->
 

@@ -9,7 +9,7 @@
         <th class="text-center">Kategori</th>
         <th class="text-center">Jumlah Dibeli</th>
         <th class="text-center">Tanggal Kadaluwarsa</th>
-        <th class="text-center"">Harga Satuan</th>
+        <th class="text-center">Harga Satuan</th>
         <th class="text-center">Total</th>
         <th class="text-center">Aksi</th>
 
@@ -106,7 +106,11 @@
   </div>
   </div>
   </div>
-  <script>
+
+<?php endforeach;?>
+</tbody>
+</table>
+<script>
     $(function(){
         $("#edthrg<?php echo $buy->idFakturbeli;?>").on("input",function(){
             var qty = $("#edtqty<?php echo $buy->idFakturbeli;?>").val();
@@ -126,9 +130,6 @@
         
     });
   </script>
-<?php endforeach;?>
-</tbody>
-</table>
 <script type="text/javascript">
       function loadKate(str){
           var xhttp = new XMLHttpRequest();
@@ -140,11 +141,15 @@
                       output2 = element["Jenis_obat"];
                       output3 = element["hrg_obat"];
                       output4 = element['kadaluwarsa'];
+                      output5 = element['ID_kategori'];
+                      output6 = element['ID_Obat'];
                   });
-                  document.getElementById("ktgr").value = output1;
+                  document.getElementById("ktgr2").value = output1;
                   document.getElementById("jns2").value = output2;
-  //                document.getElementById("hrg").value = output3;
-  //                document.getElementById("kadal").value = output4;
+                 document.getElementById("hrg2").value = output3;
+                 document.getElementById("kadal2").value = output4;
+                 document.getElementById("idKate").value = output5;
+                 document.getElementById("nmObat").value = output6;
               }
           };
           xhttp.open("GET", "<?php echo base_url() . 'Trx/kategori?id='?>"+str, true);

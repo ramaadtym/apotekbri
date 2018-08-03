@@ -56,11 +56,11 @@
 
   });
       $(function(){
-          $("#hrg2").on("input",function(){
-              var qty = $("#qty2").val();
-              var hrg = $("#hrg2").val();
-              $('#tot2').val(qty*hrg);
-          });
+        $("#qty2").on("input",function(){
+        var qty = $("#qty2").val();
+        var hrg = $("#hrg2").val();
+        $('#tot2').val(qty*hrg);
+    });
 
       });
 

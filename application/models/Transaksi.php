@@ -17,6 +17,7 @@
 			return $this->db->get('penjualan')->result();
 		}
 		public function get_kategori($id){
+			// $this->db->select('*');
 			$this->db->where("ID_obat",intval($id));
 			$this->db->join('kategori','obat.ID_kategori = kategori.ID_kategori');
 			$query = $this->db->get("obat");

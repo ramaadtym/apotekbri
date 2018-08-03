@@ -2,6 +2,8 @@
 	class User extends CI_model{
 		public function verify($uname,$pass){
 			$this->db->where('induk',$uname);
+			$encrypt = md5($pass);
+			$this->db->where('pass',$encrypt);
 			$query = $this->db->get('apoteker');
 
 			if($query->num_rows() > 0):

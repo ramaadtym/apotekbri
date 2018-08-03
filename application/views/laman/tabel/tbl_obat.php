@@ -5,7 +5,7 @@
         <th class="d-none d-sm-table-cell">Nama Obat</th>
         <th class="d-none d-sm-table-cell" style="width: 15%;">Jenis</th>
         <th class="text-center" style="width: 15%;">Kategori</th>
-        <th class="text-center" style="width: 15%;">Jumlah</th>
+        <th class="text-center" style="width: 15%;">Harga Obat</th>
         <th class="text-center" style="width: 15%;">Tanggal Kadaluwarsa</th>
     </tr>
 </thead>
